@@ -2,7 +2,6 @@ package com.example.enterparkticket.apis.enduser.security.handler
 
 import com.example.enterparkticket.apis.enduser.security.JwtTokenProvider
 import com.example.enterparkticket.apis.enduser.security.dto.CustomOAuth2User
-import com.example.enterparkticket.domain.common.consts.EnterparkTicketConsts.ROLE_PREFIX
 import com.fasterxml.jackson.databind.ObjectMapper
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse

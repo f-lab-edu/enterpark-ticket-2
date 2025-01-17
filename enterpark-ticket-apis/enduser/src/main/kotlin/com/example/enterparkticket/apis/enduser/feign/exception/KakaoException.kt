@@ -1,3 +1,3 @@
-package com.example.enterparkticket.domain.common.exception
+package com.example.enterparkticket.apis.enduser.feign.exception
 
 sealed class KakaoException(private val errorCode: KakaoErrorCode) : RuntimeException()
