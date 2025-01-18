@@ -42,6 +42,7 @@ subprojects {
         implementation("org.springframework.boot:spring-boot-starter")
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
         implementation("org.jetbrains.kotlin:kotlin-reflect")
+        implementation("io.github.oshai:kotlin-logging-jvm:7.0.0")
         testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
         testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     }
