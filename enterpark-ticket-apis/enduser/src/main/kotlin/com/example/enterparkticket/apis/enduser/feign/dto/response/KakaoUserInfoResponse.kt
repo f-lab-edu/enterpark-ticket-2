@@ -1,6 +1,6 @@
 package com.example.enterparkticket.apis.enduser.feign.dto.response
 
-import com.example.enterparkticket.domain.user.command.dto.OAuth2UserInfoDto
+import com.example.enterparkticket.domain.user.port.OAuth2UserInfoDto
 import com.example.enterparkticket.apis.enduser.feign.exception.InvalidEmailException
 import com.example.enterparkticket.domain.user.model.GenderType
 import com.example.enterparkticket.domain.user.model.OAuthInfo
@@ -26,7 +26,7 @@ data class KakaoUserInfoResponse(
         val month = kakaoAccount.birthday.substring(0, 2).toInt()
         val dayOfMonth = kakaoAccount.birthday.substring(2, 4).toInt()
         return OAuth2UserInfoDto(
-            OAuthInfo(OAuthProvider.KAKAO, id),
+            OAuthInfo(OAuthProvider.KAKAO, id.toString()),
             kakaoAccount.name,
             kakaoAccount.email,
             kakaoAccount.phoneNumber,
