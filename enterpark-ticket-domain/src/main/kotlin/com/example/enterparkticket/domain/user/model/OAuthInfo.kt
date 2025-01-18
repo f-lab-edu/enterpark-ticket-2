@@ -13,5 +13,5 @@ data class OAuthInfo(
     val provider: OAuthProvider,
 
     @Column(nullable = false)
-    val oid: Long,
+    val oid: String,
 )

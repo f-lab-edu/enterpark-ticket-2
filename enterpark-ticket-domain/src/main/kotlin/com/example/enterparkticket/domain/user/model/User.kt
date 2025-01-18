@@ -65,10 +65,9 @@ class User(
     var state: StateType = StateType.NORMAL
         protected set
 
-    fun withdrawUser(): Long {
+    fun withdrawUser() {
         state = StateType.SUSPENDED
         deleteSoftly()
-        return oAuthInfo.oid
     }
 
     fun updateUser(name: String, email: String, phoneNumber: String) {

@@ -10,8 +10,6 @@ import org.springframework.data.redis.connection.RedisConnectionFactory
 import org.springframework.data.redis.connection.RedisPassword
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory
-import org.springframework.data.redis.core.RedisTemplate
-import org.springframework.data.redis.serializer.StringRedisSerializer
 
 @Configuration
 class RedisConfig(
@@ -29,15 +27,6 @@ class RedisConfig(
             password = RedisPassword.of(this@RedisConfig.password)
         }
         return LettuceConnectionFactory(config)
-    }
-
-    @Bean
-    fun customRedisTemplate(): RedisTemplate<String, Any> {
-        return RedisTemplate<String, Any>().apply {
-            connectionFactory = customRedisConnectionFactory()
-            keySerializer = StringRedisSerializer()
-            valueSerializer = StringRedisSerializer()
-        }
     }
 
     @Bean

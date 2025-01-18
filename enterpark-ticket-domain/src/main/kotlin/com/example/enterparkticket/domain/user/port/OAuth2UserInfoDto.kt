@@ -1,4 +1,4 @@
-package com.example.enterparkticket.domain.user.command.dto
+package com.example.enterparkticket.domain.user.port
 
 import com.example.enterparkticket.domain.user.model.GenderType
 import com.example.enterparkticket.domain.user.model.OAuthInfo
@@ -16,9 +16,5 @@ data class OAuth2UserInfoDto(
 
     fun toUserEntity(): User {
         return User(oAuthInfo, name, email, phoneNumber, birthDate, gender)
-    }
-
-    fun toUpdateUserDto(): UpdateUserDto {
-        return UpdateUserDto(name, email, phoneNumber)
     }
 }

@@ -11,8 +11,10 @@ import com.example.enterparkticket.domain.reservation.port.UserPort
 import com.example.enterparkticket.domain.seat.model.Seat
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
+@Transactional
 class ReservationCommandHandler(
     private val userPort: UserPort,
     private val performancePort: PerformancePort,
