@@ -1,10 +1,9 @@
-package com.example.enterparkticket.application.usecase.user.command
+package com.example.enterparkticket.domain.user.command
 
-import com.example.enterparkticket.application.usecase.user.dto.OAuth2UserInfoDto
-import com.example.enterparkticket.application.usecase.user.dto.UpdateUserDto
-import com.example.enterparkticket.application.usecase.user.port.OAuth2Port
-import com.example.enterparkticket.domain.user.command.UserCommandService
+import com.example.enterparkticket.domain.user.command.dto.OAuth2UserInfoDto
+import com.example.enterparkticket.domain.user.command.dto.UpdateUserAddressDto
 import com.example.enterparkticket.domain.user.model.User
+import com.example.enterparkticket.domain.user.port.OAuth2Port
 import com.example.enterparkticket.domain.user.query.UserQueryService
 import com.example.enterparkticket.domain.user.validator.UserValidator
 import org.springframework.stereotype.Service
@@ -30,7 +29,7 @@ class UserCommandHandler(
         oAuth2Port.unlinkUser(oid)
     }
 
-    fun updateUserAddress(userId: Long, dto: UpdateUserDto) {
+    fun updateUserAddress(userId: Long, dto: UpdateUserAddressDto) {
         val user = userQueryService.findByUserId(userId)
         userCommandService.updateUserAddress(user, dto.address)
     }

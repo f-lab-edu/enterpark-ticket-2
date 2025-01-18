@@ -1,6 +1,6 @@
 package com.example.enterparkticket.apis.enduser.feign.dto.response
 
-import com.example.enterparkticket.application.usecase.user.dto.OAuth2UserInfoDto
+import com.example.enterparkticket.domain.user.command.dto.OAuth2UserInfoDto
 import com.example.enterparkticket.apis.enduser.feign.exception.InvalidEmailException
 import com.example.enterparkticket.domain.user.model.GenderType
 import com.example.enterparkticket.domain.user.model.OAuthInfo

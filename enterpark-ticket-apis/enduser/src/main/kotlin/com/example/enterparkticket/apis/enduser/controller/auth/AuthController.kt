@@ -2,7 +2,7 @@ package com.example.enterparkticket.apis.enduser.controller.auth
 
 import com.example.enterparkticket.apis.enduser.security.dto.AuthUser
 import com.example.enterparkticket.apis.enduser.security.dto.UserPrincipal
-import com.example.enterparkticket.application.usecase.user.command.UserCommandHandler
+import com.example.enterparkticket.domain.user.command.UserCommandHandler
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.PatchMapping

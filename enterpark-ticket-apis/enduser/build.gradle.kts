@@ -16,6 +16,4 @@ dependencies {
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.12.6")
 
     implementation(project(":enterpark-ticket-domain"))
-    implementation(project(":enterpark-ticket-infra"))
-    implementation(project(":enterpark-ticket-application"))
 }

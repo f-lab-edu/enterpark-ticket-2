@@ -1,8 +1,8 @@
 package com.example.enterparkticket.apis.enduser.security.service
 
 import com.example.enterparkticket.apis.enduser.security.dto.CustomOAuth2User
-import com.example.enterparkticket.application.usecase.user.command.UserCommandHandler
-import com.example.enterparkticket.application.usecase.user.port.OAuth2Port
+import com.example.enterparkticket.domain.user.command.UserCommandHandler
+import com.example.enterparkticket.domain.user.port.OAuth2Port
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest
 import org.springframework.security.oauth2.core.user.OAuth2User

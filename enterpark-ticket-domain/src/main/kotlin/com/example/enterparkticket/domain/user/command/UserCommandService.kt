@@ -1,5 +1,6 @@
 package com.example.enterparkticket.domain.user.command
 
+import com.example.enterparkticket.domain.user.command.dto.UpdateUserDto
 import com.example.enterparkticket.domain.user.model.User
 import com.example.enterparkticket.domain.user.repository.UserRepository
 import org.springframework.stereotype.Service

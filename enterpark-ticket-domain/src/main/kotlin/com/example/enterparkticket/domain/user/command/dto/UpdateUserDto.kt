@@ -1,4 +1,4 @@
-package com.example.enterparkticket.domain.user.command
+package com.example.enterparkticket.domain.user.command.dto
 
 data class UpdateUserDto(
     val name: String,

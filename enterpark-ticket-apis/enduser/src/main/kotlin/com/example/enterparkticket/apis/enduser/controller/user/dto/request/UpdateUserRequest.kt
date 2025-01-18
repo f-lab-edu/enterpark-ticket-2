@@ -1,6 +1,6 @@
 package com.example.enterparkticket.apis.enduser.controller.user.dto.request
 
-import com.example.enterparkticket.application.usecase.user.dto.UpdateUserDto
+import com.example.enterparkticket.domain.user.command.dto.UpdateUserAddressDto
 import jakarta.validation.constraints.Size
 
 data class UpdateUserRequest(
@@ -9,7 +9,7 @@ data class UpdateUserRequest(
     val address: String,
 ) {
 
-    fun toUpdateUserDto(): UpdateUserDto {
-        return UpdateUserDto(address)
+    fun toUpdateUserAddressDto(): UpdateUserAddressDto {
+        return UpdateUserAddressDto(address)
     }
 }

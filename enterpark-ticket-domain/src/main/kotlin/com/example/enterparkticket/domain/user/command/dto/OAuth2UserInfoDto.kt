@@ -1,6 +1,5 @@
-package com.example.enterparkticket.application.usecase.user.dto
+package com.example.enterparkticket.domain.user.command.dto
 
-import com.example.enterparkticket.domain.user.command.UpdateUserDto
 import com.example.enterparkticket.domain.user.model.GenderType
 import com.example.enterparkticket.domain.user.model.OAuthInfo
 import com.example.enterparkticket.domain.user.model.User
