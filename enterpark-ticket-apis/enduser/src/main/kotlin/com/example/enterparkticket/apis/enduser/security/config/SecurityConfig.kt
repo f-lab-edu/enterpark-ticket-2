@@ -27,7 +27,7 @@ class SecurityConfig(
             .formLogin { it.disable() }
             .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
             .authorizeHttpRequests {
-                it.requestMatchers("/oauth2/**").permitAll()
+                it.requestMatchers("/oauth2/**", "/actuator/**").permitAll()
                 it.anyRequest().authenticated()
             }
             .oauth2Login { loginCustomizer ->
