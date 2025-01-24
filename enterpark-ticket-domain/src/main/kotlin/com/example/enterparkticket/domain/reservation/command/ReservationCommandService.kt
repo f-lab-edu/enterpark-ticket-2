@@ -1,7 +1,7 @@
 package com.example.enterparkticket.domain.reservation.command
 
 import com.example.enterparkticket.domain.reservation.model.Reservation
-import com.example.enterparkticket.domain.reservation.repository.ReservationRepository
+import com.example.enterparkticket.domain.reservation.model.repository.ReservationRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

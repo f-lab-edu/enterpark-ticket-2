@@ -1,4 +1,4 @@
-package com.example.enterparkticket.domain.seat.repository
+package com.example.enterparkticket.domain.seat.model.repository
 
 import com.example.enterparkticket.domain.seat.model.Seat
 import org.springframework.data.jpa.repository.JpaRepository

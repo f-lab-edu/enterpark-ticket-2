@@ -3,7 +3,7 @@ package com.example.enterparkticket.domain.user.query
 import com.example.enterparkticket.domain.user.model.OAuthInfo
 import com.example.enterparkticket.domain.user.model.User
 import com.example.enterparkticket.domain.user.exception.NotFoundUserException
-import com.example.enterparkticket.domain.user.repository.UserRepository
+import com.example.enterparkticket.domain.user.model.repository.UserRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

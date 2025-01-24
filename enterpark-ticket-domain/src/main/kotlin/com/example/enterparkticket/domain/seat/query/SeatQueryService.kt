@@ -1,7 +1,7 @@
 package com.example.enterparkticket.domain.seat.query
 
 import com.example.enterparkticket.domain.seat.model.Seat
-import com.example.enterparkticket.domain.seat.repository.SeatRepository
+import com.example.enterparkticket.domain.seat.model.repository.SeatRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
