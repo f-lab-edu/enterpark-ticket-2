@@ -1,4 +1,4 @@
-package com.example.enterparkticket.domain.common.config.async
+package com.example.enterparkticket.domain.config.async
 
 import org.slf4j.MDC
 import org.springframework.core.task.TaskDecorator

@@ -1,7 +1,7 @@
 package com.example.enterparkticket.apis.enduser.security.adapter
 
 import com.example.enterparkticket.apis.enduser.security.dto.UserPrincipal
-import com.example.enterparkticket.domain.common.config.jpa.AuditorAwarePort
+import com.example.enterparkticket.domain.config.jpa.AuditorAwarePort
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Component
 

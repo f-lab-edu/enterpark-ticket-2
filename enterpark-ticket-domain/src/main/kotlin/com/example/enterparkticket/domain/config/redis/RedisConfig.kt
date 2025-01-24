@@ -1,4 +1,4 @@
-package com.example.enterparkticket.domain.common.config.redis
+package com.example.enterparkticket.domain.config.redis
 
 import org.redisson.Redisson
 import org.redisson.api.RedissonClient

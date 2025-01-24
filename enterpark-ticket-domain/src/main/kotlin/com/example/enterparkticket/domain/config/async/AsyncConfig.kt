@@ -1,4 +1,4 @@
-package com.example.enterparkticket.domain.common.config.async
+package com.example.enterparkticket.domain.config.async
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

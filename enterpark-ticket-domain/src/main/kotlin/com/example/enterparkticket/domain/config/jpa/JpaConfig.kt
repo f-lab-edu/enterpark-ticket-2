@@ -1,4 +1,4 @@
-package com.example.enterparkticket.domain.common.config.jpa
+package com.example.enterparkticket.domain.config.jpa
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
