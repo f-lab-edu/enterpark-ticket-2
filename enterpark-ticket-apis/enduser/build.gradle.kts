@@ -13,6 +13,7 @@ dependencies {
 
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("io.micrometer:micrometer-registry-prometheus")
+    implementation("com.github.loki4j:loki-logback-appender:1.6.0")
 
     implementation("io.jsonwebtoken:jjwt-api:0.12.6")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:0.12.6")

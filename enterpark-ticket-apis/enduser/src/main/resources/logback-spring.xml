@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-  <property name="DATE_PATTERN" value="yyyy-MM-dd"/>
   <property name="LOG_PATTERN"
     value="[%X{request_id:-startup}] [%d{yyyy-MM-dd HH:mm:ss}:%-4relative] %green([%thread]) %highlight(%-5level) %boldWhite([%C.%M:%yellow(%L)]) - %msg%n"/>
 
@@ -11,8 +10,31 @@
     </encoder>
   </appender>
 
+  <appender name="LOKI" class="com.github.loki4j.logback.Loki4jAppender">
+    <http>
+      <url>http://localhost:3100/loki/api/v1/push</url>
+    </http>
+    <format>
+      <label>
+        <pattern>
+          app = enterpark-ticket,
+          env = ${ENV},
+        </pattern>
+        <structuredMetadataPattern>
+          thread = %thread,
+          class = %logger,
+          traceId = %X{request_id:-startup},
+        </structuredMetadataPattern>
+      </label>
+      <staticLabels>true</staticLabels>
+      <message>
+        <pattern>${LOG_PATTERN}</pattern>
+      </message>
+    </format>
+  </appender>
+
   <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <file>${LOG_PATH}/${DATE_PATTERN}.log</file>
+    <file>${LOG_PATH}/enterpark-ticket.log</file>
     <encoder>
       <pattern>${LOG_PATTERN}</pattern>
     </encoder>
@@ -24,24 +46,33 @@
     </rollingPolicy>
   </appender>
 
+  <logger name="feign.Logger" level="DEBUG"/>
+
   <springProfile name="local">
+    <property name="ENV" value="local"/>
+
     <root level="INFO">
+      <appender-ref ref="LOKI"/>
       <appender-ref ref="CONSOLE"/>
     </root>
   </springProfile>
 
   <springProfile name="dev">
     <property name="LOG_PATH" value="./logs/dev"/>
+    <property name="ENV" value="dev"/>
 
     <root level="INFO">
+      <appender-ref ref="LOKI"/>
       <appender-ref ref="FILE"/>
     </root>
   </springProfile>
 
   <springProfile name="prod">
     <property name="LOG_PATH" value="./logs/prod"/>
+    <property name="ENV" value="prod"/>
 
     <root level="INFO">
+      <appender-ref ref="LOKI"/>
       <appender-ref ref="FILE"/>
     </root>
   </springProfile>
