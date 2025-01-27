@@ -17,14 +17,17 @@ class RedisConfig(
     private val host: String,
     @Value("\${spring.data.redis.port}")
     private val port: Int,
-    @Value("\${spring.data.redis.password}")
+    @Value("\${spring.data.redis.password:}")
     private val password: String,
 ) {
 
     @Bean
     fun customRedisConnectionFactory(): RedisConnectionFactory {
         val config = RedisStandaloneConfiguration(host, port).apply {
-            password = RedisPassword.of(this@RedisConfig.password)
+            val configPassword = this@RedisConfig.password
+            if (configPassword.isNotBlank()) {
+                password = RedisPassword.of(configPassword)
+            }
         }
         return LettuceConnectionFactory(config)
     }
@@ -32,9 +35,13 @@ class RedisConfig(
     @Bean
     fun redissonClient(): RedissonClient {
         val config = Config().apply {
-            useSingleServer()
-                .setAddress("$REDISSON_HOST_PREFIX$host:$port")
-                .setPassword(password)
+            useSingleServer().apply {
+                address = "$REDISSON_HOST_PREFIX$host:$port"
+                val configPassword = this@RedisConfig.password
+                if (configPassword.isNotBlank()) {
+                    password = configPassword
+                }
+            }
         }
         return Redisson.create(config)
     }
