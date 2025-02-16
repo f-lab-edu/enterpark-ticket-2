@@ -7,6 +7,13 @@ spring:
     username: ${LOCAL_MYSQL_USERNAME}
     password: ${LOCAL_MYSQL_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 50
+      minimum-idle: 50
+      connection-timeout: 3000
+      max-lifetime: 50000
+      idle-timeout: 40000
+      keepalive-time: 30000
   jpa:
     hibernate:
       ddl-auto: create
@@ -37,6 +44,13 @@ spring:
     username: ${DEV_MYSQL_USERNAME}
     password: ${DEV_MYSQL_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 50
+      minimum-idle: 50
+      connection-timeout: 3000
+      max-lifetime: 50000
+      idle-timeout: 40000
+      keepalive-time: 30000
   jpa:
     hibernate:
       ddl-auto: validate
@@ -64,6 +78,13 @@ spring:
     username: ${PROD_MYSQL_USERNAME}
     password: ${PROD_MYSQL_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 50
+      minimum-idle: 50
+      connection-timeout: 3000
+      max-lifetime: 50000
+      idle-timeout: 40000
+      keepalive-time: 30000
   jpa:
     hibernate:
       ddl-auto: none
