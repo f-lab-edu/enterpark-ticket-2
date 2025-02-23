@@ -16,9 +16,14 @@ class AsyncConfig {
             corePoolSize = 10
             queueCapacity = 50
             maxPoolSize = 30
+            keepAliveSeconds = 60
             setThreadNamePrefix("event-async-")
             setTaskDecorator(LoggingTaskDecorator())
             setRejectedExecutionHandler(ThreadPoolExecutor.CallerRunsPolicy())
+            setWaitForTasksToCompleteOnShutdown(true)
+            setAllowCoreThreadTimeOut(false)
+            setAcceptTasksAfterContextClose(false)
+            setStrictEarlyShutdown(false)
         }
     }
 }
