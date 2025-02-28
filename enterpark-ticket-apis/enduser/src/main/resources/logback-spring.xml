@@ -10,29 +10,6 @@
     </encoder>
   </appender>
 
-  <appender name="LOKI" class="com.github.loki4j.logback.Loki4jAppender">
-    <http>
-      <url>http://localhost:3100/loki/api/v1/push</url>
-    </http>
-    <format>
-      <label>
-        <pattern>
-          app = enterpark-ticket,
-          env = ${ENV},
-        </pattern>
-        <structuredMetadataPattern>
-          thread = %thread,
-          class = %logger,
-          traceId = %X{request_id:-startup},
-        </structuredMetadataPattern>
-      </label>
-      <staticLabels>true</staticLabels>
-      <message>
-        <pattern>${LOG_PATTERN}</pattern>
-      </message>
-    </format>
-  </appender>
-
   <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <file>${LOG_PATH}/enterpark-ticket.log</file>
     <encoder>
@@ -52,27 +29,22 @@
     <property name="ENV" value="local"/>
 
     <root level="INFO">
-      <appender-ref ref="LOKI"/>
       <appender-ref ref="CONSOLE"/>
     </root>
   </springProfile>
 
   <springProfile name="dev">
     <property name="LOG_PATH" value="./logs/dev"/>
-    <property name="ENV" value="dev"/>
 
     <root level="INFO">
-      <appender-ref ref="LOKI"/>
       <appender-ref ref="FILE"/>
     </root>
   </springProfile>
 
   <springProfile name="prod">
     <property name="LOG_PATH" value="./logs/prod"/>
-    <property name="ENV" value="prod"/>
 
     <root level="INFO">
-      <appender-ref ref="LOKI"/>
       <appender-ref ref="FILE"/>
     </root>
   </springProfile>

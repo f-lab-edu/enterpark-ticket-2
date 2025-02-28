@@ -21,6 +21,7 @@ class AsyncConfig {
             setTaskDecorator(LoggingTaskDecorator())
             setRejectedExecutionHandler(ThreadPoolExecutor.CallerRunsPolicy())
             setWaitForTasksToCompleteOnShutdown(true)
+            setAwaitTerminationSeconds(20)
             setAllowCoreThreadTimeOut(false)
             setAcceptTasksAfterContextClose(false)
             setStrictEarlyShutdown(false)
