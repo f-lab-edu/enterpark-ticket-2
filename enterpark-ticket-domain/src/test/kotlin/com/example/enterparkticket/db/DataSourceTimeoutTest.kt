@@ -2,11 +2,16 @@ package com.example.enterparkticket.db
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
+import io.github.oshai.kotlinlogging.KotlinLogging
 import io.kotest.assertions.shouldFail
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.delay
+import java.sql.SQLException
 import kotlin.time.Duration.Companion.seconds
+
+private val logger = KotlinLogging.logger {}
 
 class DataSourceTimeoutTest : StringSpec({
 
@@ -113,15 +118,60 @@ class DataSourceTimeoutTest : StringSpec({
 
         dataSource.close()
     }
+
+    "JDBC socketTimeout 초과 시 쿼리 실행 중 커넥션이 종료된다." {
+        val dataSource = createDataSource(socketTimeout = 3000)
+
+        shouldThrow<SQLException> {
+            dataSource.connection.use {
+                logger.error { it }
+                it.createStatement().executeQuery("SELECT SLEEP(5);")
+            }
+        }
+
+        dataSource.close()
+    }
+
+    "HikariCP의 max-lifetime 초과 시 실행 중인 쿼리는 완료 후 커넥션이 종료된다." {
+        // max-lifetime - 30초, 쿼리 실행 시간 - 35초
+        val dataSource = createDataSource(socketTimeout = 40000)
+
+        dataSource.connection.use {
+            logger.info { "쿼리 시작" }
+            it.createStatement().executeQuery("SELECT SLEEP(35);")
+            logger.info { "쿼리 완료" }
+        }
+
+        dataSource.close()
+    }
+
+    "Statement.queryTimeout 초과 시 실행 중인 쿼리는 강제 종료된다." {
+        // max-lifetime - 30초, 쿼리 실행 시간 - 35초
+        val dataSource = createDataSource(socketTimeout = 40000)
+
+        dataSource.connection.use {
+            val statement = it.createStatement()
+
+            logger.info { "쿼리 시작" }
+            statement.queryTimeout = 10
+            statement.executeQuery("SELECT SLEEP(35);")
+            logger.info { "쿼리 완료" }
+        }
+
+        dataSource.close()
+    }
 })
 
 fun createDataSource(
     newMaxLifeTime: Long = 30000,
     newIdleTimeout: Long = 10000,
     newKeepaliveTime: Long = 30000,
+    socketTimeout: Long = 5000,
+    connectTimeout: Long = 5000,
 ): HikariDataSource {
     val config = HikariConfig().apply {
-        jdbcUrl = "jdbc:mysql://localhost:3307/enterpark_ticket_db"
+        jdbcUrl =
+            "jdbc:mysql://localhost:3307/enterpark_ticket_db?socketTimeout=$socketTimeout&connectTimeout=$connectTimeout"
         username = "root"
         password = "1234"
         driverClassName = "com.mysql.cj.jdbc.Driver"
