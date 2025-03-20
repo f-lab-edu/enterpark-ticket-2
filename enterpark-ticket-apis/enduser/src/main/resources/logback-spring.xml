@@ -26,8 +26,6 @@
   <logger name="feign.Logger" level="DEBUG"/>
 
   <springProfile name="local">
-    <property name="ENV" value="local"/>
-
     <root level="INFO">
       <appender-ref ref="CONSOLE"/>
     </root>
