@@ -1,8 +1,10 @@
-name: Deploy
+name: Apis-Enduser Deploy
 
 on:
   pull_request:
     branches: [ "main" ]
+    paths:
+      - 'enterpark-ticket-apis/enduser/**'
 
 jobs:
   build:
@@ -19,7 +21,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build with Gradle
-        run: ./gradlew clean build --debug
+        run: ./gradlew :enterpark-ticket-apis:enduser:clean :enterpark-ticket-apis:enduser:build
 
       - name: Get current time
         uses: josStorer/get-current-time@v2
