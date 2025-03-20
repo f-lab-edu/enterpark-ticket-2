@@ -44,13 +44,6 @@ spring:
 logging:
   level:
     com.example.enterparkticket.apis.*: debug
-management:
-  endpoints:
-    web:
-      exposure:
-        include: prometheus
-    prometheus:
-      enabled: true
 ---
 spring:
   config:
