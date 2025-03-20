@@ -49,6 +49,6 @@ jobs:
           REPOSITORY: enterpark-ticket
           IMAGE_TAG: ${{ steps.current-time.outputs.formattedTime }}
         run: |
-          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG ./enterpark-ticket-apis/enduser
           docker tag $REPOSITORY:$IMAGE_TAG $REGISTRY/$REPOSITORY:$IMAGE_TAG
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
